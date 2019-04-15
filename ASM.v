@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-//STATE DECLARATIONS DONE 
+//STATE DECLARATIONS DONE AND REGISTER DONE
 
 module ASM (clk, rst, clr, ent, change, led, ssd, sw);
 
@@ -225,34 +225,69 @@ always @ (*)
 		end
 
 		else 
+		begin
 			if(current_state == IDLE)
 			begin
-			 	password[15:0] <= 16'b0000000000000000; // Built in reset is 0, when user in IDLE state.
+			 	password[15:0] <= 16'b0000000000000000; 
 				 // you may need to add extra things here.
 			end
+			
+			
+			else if (current_state == LOCKED | current_state == IDLE)
+				checklock = 1;
+				
+			else if (curernt_state == UNLOCKED)
+				checklock = 0;
 		
+	
 			else if(current_state == GETFIRSTDIGIT)
 			begin
 				if(ent==1)
 					inpassword[15:12]<=sw[3:0]; // inpassword is the password entered by user, first 4 digin will be equal to current switch values
 			end
 
-			else if (current_state == GETSECONDIGIT)
+			else if (current_state == GETSECONDDIGIT)
 			begin
-
 				if(ent==1)
-					inpassword[11:8]<=sw[3:0]; // inpassword is the password entered by user, second 4 digit will be equal to current switch values
-				
+					inpassword[11:8]<=sw[3:0]; 
+			end
+			
+			else if (current_state == GETTHIRDDIGIT)
+			begin
+				if(ent==1)
+					inpassword[7:4]<=sw[3:0]; 
 			end
 
+			else if (current_state == GETFOURTHDIGIT)
+			begin
+				if(ent==1)
+					inpassword[3:0]<=sw[3:0]; 
+			end
 
-		/*
+			else if(current_state == GETNEWFIRST)
+			begin
+				if(ent==1)
+					password[15:12]<=sw[3:0]; 
+			end
+			
+			else if (current_state == GETNEWSECOND)
+			begin
+				if(ent==1)
+					password[11:8]<=sw[3:0]; 
+			end
+			
+			else if (current_state == GETNEWTHIRD)
+			begin
+				if(ent==1)
+					password[7:4]<=sw[3:0]; 
+			end
 
-		Complete the rest of ASM chart, in this section, you are supposed to set the values for control registers, stored registers(password for instance)
-		number of trials, counter values etc... 
-
-		*/
-
+			else if (current_state == GETNEWFOURTH)
+			begin
+				if(ent==1)
+					password[3:0]<=sw[3:0]; 
+			end
+		end
 	end
 
 
