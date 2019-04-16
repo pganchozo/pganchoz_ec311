@@ -1,0 +1,33 @@
+NET "rst" LOC= C4;//reset button
+NET "ent" LOC= C9;//enter button
+NET "change" LOC= D9; //change button
+NET "clr" LOC= A8; //clear button
+
+//switches
+NET "sw[0]" LOC = T10;// first password digit
+NET "sw[1]" LOC= T9; //second password digit
+NET "sw[2]" LOC= V9; //third password digit
+NET "sw[3]" LOC= M8; //fourth password digit
+
+//led state representation
+NET "led[0]" LOC= U16; 
+NET "led[1]" LOC= V16;
+NET "led[2]" LOC= U15;
+NET "led[3]" LOC= V15;
+NET "led[4]" LOC= M11;
+NET "led[5]" LOC= N11;
+
+
+//ssd output
+NET "seven_out[0]" LOC= T17;
+NET "seven_out[1]" LOC= T18;
+NET "seven_out[2]" LOC= U17;
+NET "seven_out[3]" LOC= U18;
+NET "seven_out[4]" LOC= M14;
+NET "seven_out[5]" LOC= N14;
+NET "seven_out[6]" LOC= L14;
+
+NET "AN[0]" LOC= N16;
+NET "AN[1]" LOC= N15;
+NET "AN[2]" LOC= P18;
+NET "AN[3]" LOC= P17;
